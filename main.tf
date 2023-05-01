@@ -1,5 +1,5 @@
-resource "aws_elasticache_cluster" "elasticcache" {
-  cluster_id           = "${var.env}-elasticcache"
+resource "aws_elasticache_cluster" "elasticache" {
+  cluster_id           = "${var.env}-elasticache"
   engine               = var.engine
   engine_version       = var.engine_version
   node_type            = var.node_type
@@ -22,12 +22,12 @@ resource "aws_elasticache_subnet_group" "main" {
 }
 
 output "redis" {
-  value = aws_elasticache_cluster.elasticcache
+  value = aws_elasticache_cluster.elasticache
 }
 
-resource "aws_ssm_parameter" "elasticcache_endpoint" {
-  name  = "${var.env}.elasticcache_endpoint"
+resource "aws_ssm_parameter" "elasticache_endpoint" {
+  name  = "${var.env}.elasticache_endpoint"
   type  = "String"
-  value = aws_elasticache_cluster.elasticcache.cache_nodes[0].address
+  value = aws_elasticache_cluster.elasticache.cache_nodes[0].address
 }
 
