@@ -5,3 +5,5 @@ variable "num_cache_nodes" {}
 variable "subnet_ids" {}
 variable "env" {}
 variable "tags" {}
+variable "vpc_id" {}
+variable "allow_subnets" {}
